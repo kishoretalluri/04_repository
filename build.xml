@@ -1,0 +1,5 @@
+<project name="flipkart" default="compile" basedir=".">
+	<target name="compile">
+		<ehco message="h! welocme"/>
+	</target>
+</project>
