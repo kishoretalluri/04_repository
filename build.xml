@@ -5,4 +5,8 @@
 	<target name="package">
 		<echo message="hello welcome"/>
 	</target>
+	<target name="package">
+		<echo message="hello welcome"/>
+	</target>
+
 </project>
