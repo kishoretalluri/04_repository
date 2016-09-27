@@ -2,4 +2,7 @@
 	<target name="compile">
 		<ehco message="h! welocme"/>
 	</target>
+	<target name="package">
+		<echo message="hello welcome"/>
+	</target>
 </project>
