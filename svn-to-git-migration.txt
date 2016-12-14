@@ -1,0 +1,39 @@
+Reference :: https://www.atlassian.com/git/tutorials/migrating-prepare/
+             http://www.sailmaker.co.uk/blog/2013/05/05/migrating-from-svn-to-git-preserving-branches-and-tags-3/#convert-tags
+--------------------------
+step1 : create a floder (eg:svn-to-git_migration)
+step2 : cd svn-to-git_migration
+step3 : download svn-migration-scripts.jar to that folder
+step4 : java -jar svn-migration-scripts.jar verify
+step5 : java -jar svn-migration-scripts.jar authors <svn-repo> > authors.txt (fr eg:java -jar svn-migration-scripts.jar authors http://svng.barcapint.com/SVG/repos/BWINTEGRATION/apps/pride-dbtasks/ > authors.txt)
+step6 : git svn clone --stdlayout --authors-file=authors.txt <svn-repo>/<project> <git-repo-name> (for eg:: git svn clone --stdlayout --authors-file=authors.txt http://svng.barcapint.com/SVG/repos/BWINTEGRATION/apps/pride-dbtasks/ pride-dbtasks)
+step7: git remote add origin <REPO-URL>
+step8 : git remote -v
+step9; git push origin --all (to push trunk to git repo)
+step10 : java -Dfile.encoding=utf-8 -jar ~/svn-migration-scripts.jar clean-git --force (You should now see all of your SVN branches in the git branch output, along with your SVN tags in the git tag output. )
+
+if the above the step is not working do manually.
+ -->for branches--> git checkout <branchname> 
+ (or)
+ for branch in `git branch -r | grep "branches/" | sed 's/ branches\///'`; do
+  git branch $branch refs/remotes/$branch
+done
+ -->for tags-->
+ 
+ for tag in `git branch -r | grep "tags/" | sed 's/ tags\///'`; do
+  git tag -a -m"Converting SVN tags" $tag refs/remotes/$tag
+done
+ 
+step11 : git branch (To list branch names)
+step12 : git tag     (To list tags)
+step13 :git push origin -all (to push trunk and branches to remote git repo)
+step14 :git push --tags (to push tags)
+
+
+
+
+
+---------------
+
+GIT_CURL_VERBOSE=1  git push -u origin master
+
