@@ -1,5 +1,11 @@
 <project name="snapdeal" default="compile">
 	<target name="compile">
 		<echo message="hello welcome"/>
+		<echo message="hello"/>
+		<echo message="hai welcome"/>
+
+		
+		
+
 	</target>
 </project>
